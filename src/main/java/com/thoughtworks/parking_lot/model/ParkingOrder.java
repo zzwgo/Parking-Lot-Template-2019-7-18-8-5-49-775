@@ -1,4 +1,6 @@
 package com.thoughtworks.parking_lot.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,7 +11,9 @@ public class ParkingOrder {
     private Long id;
     private String name;
     private String carID;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date enterTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date exitTime;
     private boolean isOpen;
 
