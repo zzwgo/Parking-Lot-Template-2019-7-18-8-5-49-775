@@ -4,4 +4,6 @@ import com.thoughtworks.parking_lot.model.ParkingLot;
 
 public interface ParkingLotService {
     ParkingLot addParkingLot(ParkingLot parkingLot);
+
+    void deleteParkingLot(Long id);
 }
