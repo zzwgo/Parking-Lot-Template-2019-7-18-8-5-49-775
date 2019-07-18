@@ -2,6 +2,7 @@ package com.thoughtworks.parking_lot.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import java.util.List;
 
 @Entity
 public class ParkingLot {
@@ -13,6 +14,17 @@ public class ParkingLot {
     @Min(value = 0)
     private int capacity;
     private String location;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "parkID")
+    private List<ParkingOrder> parkingOrders;
+
+    public List<ParkingOrder> getParkingOrders() {
+        return parkingOrders;
+    }
+
+    public void setParkingOrders(List<ParkingOrder> parkingOrders) {
+        this.parkingOrders = parkingOrders;
+    }
 
     public Long getId() {
         return id;

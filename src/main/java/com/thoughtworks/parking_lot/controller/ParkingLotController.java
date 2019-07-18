@@ -1,6 +1,7 @@
 package com.thoughtworks.parking_lot.controller;
 
 import com.thoughtworks.parking_lot.model.ParkingLot;
+import com.thoughtworks.parking_lot.model.ParkingOrder;
 import com.thoughtworks.parking_lot.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -34,4 +35,10 @@ public class ParkingLotController {
     public ParkingLot updateParkingLot(@PathVariable Long id,@RequestBody ParkingLot parkingLot){
         return parkingLotService.updateParkingLot(id,parkingLot);
     }
+    @PostMapping("/{id}/orders")
+    public ParkingLot addParkingOrder(@PathVariable Long id,@RequestBody ParkingOrder parkingOrder){
+        return parkingLotService.addParkingOrder(id,parkingOrder);
+    }
+
+
 }
