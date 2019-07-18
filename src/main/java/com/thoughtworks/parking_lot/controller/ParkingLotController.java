@@ -39,6 +39,9 @@ public class ParkingLotController {
     public ParkingLot addParkingOrder(@PathVariable Long id,@RequestBody ParkingOrder parkingOrder){
         return parkingLotService.addParkingOrder(id,parkingOrder);
     }
-
+    @DeleteMapping("/{lotId}/orders/{orderID}")
+    public void closeParkingOrder(@PathVariable Long lotId,@PathVariable Long orderID){
+         parkingLotService.closeParkingOrder(lotId,orderID);
+    }
 
 }

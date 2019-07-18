@@ -2,6 +2,7 @@ package com.thoughtworks.parking_lot.service.impl;
 import com.thoughtworks.parking_lot.model.ParkingLot;
 import com.thoughtworks.parking_lot.model.ParkingOrder;
 import com.thoughtworks.parking_lot.repository.ParkingLotRepository;
+import com.thoughtworks.parking_lot.repository.ParkingOrderRepository;
 import com.thoughtworks.parking_lot.service.ParkingLotService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,14 +10,14 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 @Service
 public class ParkingLotServiceImpl implements ParkingLotService {
     @Autowired
     private ParkingLotRepository parkingLotRepository;
-
+    @Autowired
+    private ParkingOrderRepository parkingOrderRepository;
     @Override
     public ParkingLot addParkingLot(ParkingLot parkingLot) {
         return parkingLotRepository.save(parkingLot);
@@ -55,6 +56,16 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         }
         parkingOrder.setName(current_lot.getName());
         return  parkingLotRepository.save(current_lot);
+    }
+
+    @Override
+    public void closeParkingOrder(Long lotId, Long orderID) {
+        ParkingOrder parkingOrder=  parkingOrderRepository.findById(orderID).orElse(null);
+        if(parkingOrder!=null&&parkingOrder.isOpen()){
+            parkingOrder.setExitTime(new Date());
+            parkingOrder.setOpen(false);
+            parkingOrderRepository.save(parkingOrder);
+        }
     }
 
 }

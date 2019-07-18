@@ -13,4 +13,5 @@ public interface ParkingLotService {
     ParkingLot updateParkingLot(Long id, ParkingLot parkingLot);
 
     ParkingLot addParkingOrder(Long id, ParkingOrder parkingOrder);
+    void closeParkingOrder(Long lotId, Long orderID);
 }
