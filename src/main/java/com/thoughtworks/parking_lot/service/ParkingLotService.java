@@ -7,4 +7,5 @@ public interface ParkingLotService {
     ParkingLot addParkingLot(ParkingLot parkingLot);
     void deleteParkingLot(Long id);
     List<ParkingLot> getParkingLots(int pageNum, int pageSize );
+    ParkingLot getParkingLotByID(Long id);
 }

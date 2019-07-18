@@ -17,16 +17,19 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public ParkingLot addParkingLot(ParkingLot parkingLot) {
         return parkingLotRepository.save(parkingLot);
     }
-
     @Override
     public void deleteParkingLot(Long id) {
         parkingLotRepository.deleteById(id);
     }
-
     @Override
     public List<ParkingLot> getParkingLots(int pageNum, int pageSize) {
         Pageable pageable= PageRequest.of(pageNum-1,pageSize);
         Page<ParkingLot> page=parkingLotRepository.findAll(pageable);
         return page.getContent();
+    }
+
+    @Override
+    public ParkingLot getParkingLotByID(Long id) {
+        return parkingLotRepository.findById(id).orElse(null);
     }
 }
