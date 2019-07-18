@@ -8,4 +8,5 @@ public interface ParkingLotService {
     void deleteParkingLot(Long id);
     List<ParkingLot> getParkingLots(int pageNum, int pageSize );
     ParkingLot getParkingLotByID(Long id);
+    ParkingLot updateParkingLot(Long id, ParkingLot parkingLot);
 }

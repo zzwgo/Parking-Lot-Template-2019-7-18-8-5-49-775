@@ -30,4 +30,8 @@ public class ParkingLotController {
     public ParkingLot getParkingLotByID(@PathVariable Long id){
         return parkingLotService.getParkingLotByID(id);
     }
+    @PutMapping("/{id}")
+    public ParkingLot updateParkingLot(@PathVariable Long id,@RequestBody ParkingLot parkingLot){
+        return parkingLotService.updateParkingLot(id,parkingLot);
+    }
 }

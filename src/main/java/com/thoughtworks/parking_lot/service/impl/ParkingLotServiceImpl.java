@@ -17,10 +17,12 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public ParkingLot addParkingLot(ParkingLot parkingLot) {
         return parkingLotRepository.save(parkingLot);
     }
+
     @Override
     public void deleteParkingLot(Long id) {
         parkingLotRepository.deleteById(id);
     }
+
     @Override
     public List<ParkingLot> getParkingLots(int pageNum, int pageSize) {
         Pageable pageable= PageRequest.of(pageNum-1,pageSize);
@@ -32,4 +34,12 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     public ParkingLot getParkingLotByID(Long id) {
         return parkingLotRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public ParkingLot updateParkingLot(Long id, ParkingLot parkingLot) {
+        ParkingLot current_lot=getParkingLotByID(id);
+        current_lot.setCapacity(parkingLot.getCapacity());
+        return parkingLotRepository.save(current_lot);
+    }
+
 }
