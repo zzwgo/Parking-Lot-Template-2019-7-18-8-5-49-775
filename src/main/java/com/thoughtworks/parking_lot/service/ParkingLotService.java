@@ -12,6 +12,6 @@ public interface ParkingLotService {
     ParkingLot getParkingLotByID(Long id);
     ParkingLot updateParkingLot(Long id, ParkingLot parkingLot);
 
-    ParkingLot addParkingOrder(Long id, ParkingOrder parkingOrder);
+    ParkingLot addParkingOrder(Long id, ParkingOrder parkingOrder) throws Exception;
     void closeParkingOrder(Long lotId, Long orderID);
 }

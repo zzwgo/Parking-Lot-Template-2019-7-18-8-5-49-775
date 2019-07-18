@@ -1,4 +1,5 @@
 package com.thoughtworks.parking_lot.service.impl;
+import com.thoughtworks.parking_lot.exception.parkException;
 import com.thoughtworks.parking_lot.model.ParkingLot;
 import com.thoughtworks.parking_lot.model.ParkingOrder;
 import com.thoughtworks.parking_lot.repository.ParkingLotRepository;
@@ -48,12 +49,12 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     }
 
     @Override
-    public ParkingLot addParkingOrder(Long id, ParkingOrder parkingOrder) {
+    public ParkingLot addParkingOrder(Long id, ParkingOrder parkingOrder)throws Exception {
         ParkingLot current_lot=getParkingLotByID(id);
-        int busyVacancy= (int) current_lot.getParkingOrders().stream().filter(ParkingOrder::isOpen).count();
-        if(current_lot.getCapacity()-busyVacancy>0){
-            current_lot.getParkingOrders().add(parkingOrder);
+        if(current_lot.isFull()){
+            throw new parkException("停车场已经满");
         }
+        current_lot.getParkingOrders().add(parkingOrder);
         parkingOrder.setName(current_lot.getName());
         return  parkingLotRepository.save(current_lot);
     }

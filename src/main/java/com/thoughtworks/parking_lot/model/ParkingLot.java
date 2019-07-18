@@ -57,4 +57,8 @@ public class ParkingLot {
     public void setLocation(String location) {
         this.location = location;
     }
+    public boolean isFull(){
+        int busyVacancy= (int) getParkingOrders().stream().filter(ParkingOrder::isOpen).count();
+        return  getCapacity()-busyVacancy<=0;
+    }
 }

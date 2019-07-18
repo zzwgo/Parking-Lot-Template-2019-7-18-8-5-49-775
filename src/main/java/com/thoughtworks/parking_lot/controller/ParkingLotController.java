@@ -36,7 +36,7 @@ public class ParkingLotController {
         return parkingLotService.updateParkingLot(id,parkingLot);
     }
     @PostMapping("/{id}/orders")
-    public ParkingLot addParkingOrder(@PathVariable Long id,@RequestBody ParkingOrder parkingOrder){
+    public ParkingLot addParkingOrder(@PathVariable Long id,@RequestBody ParkingOrder parkingOrder) throws Exception {
         return parkingLotService.addParkingOrder(id,parkingOrder);
     }
     @DeleteMapping("/{lotId}/orders/{orderID}")
