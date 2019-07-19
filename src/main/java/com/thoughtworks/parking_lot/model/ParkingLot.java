@@ -1,5 +1,7 @@
 package com.thoughtworks.parking_lot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import java.util.List;
@@ -57,8 +59,10 @@ public class ParkingLot {
     public void setLocation(String location) {
         this.location = location;
     }
-    public boolean isFull(){
-        int busyVacancy= (int) getParkingOrders().stream().filter(ParkingOrder::isOpen).count();
-        return  getCapacity()-busyVacancy<=0;
+
+    @JsonIgnore
+    public boolean isFull() {
+        int busyVacancy = (int) getParkingOrders().stream().filter(ParkingOrder::isOpen).count();
+        return getCapacity() - busyVacancy <= 0;
     }
 }
