@@ -8,7 +8,7 @@ logging:
 
 spring:
   datasource:
-    url:  jdbc:h2:file:./h2/org
+    url:  jdbc:h2:file:./h2/org/test
   jpa:
     hibernate:
       ddl-auto: update

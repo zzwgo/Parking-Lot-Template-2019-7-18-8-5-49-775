@@ -1,0 +1,9 @@
+2019-07-21 12:10:47 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "call CSVWRITE ( 'C:\Users\Bili\Desktop\practice\a.sql, 'SELECT * FROM PARKING_LOT [*]' )"; SQL statement:
+call CSVWRITE ( 'C:\Users\Bili\Desktop\practice\a.sql, 'SELECT * FROM PARKING_LOT ' ) [42000-197]
+2019-07-21 12:11:12 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "call CSVWRITE ( 'C:\Users\Bili\Desktop\practice\a.txt, 'SELECT * FROM PARKING_LOT [*]' )"; SQL statement:
+call CSVWRITE ( 'C:\Users\Bili\Desktop\practice\a.txt, 'SELECT * FROM PARKING_LOT ' ) [42000-197]
+2019-07-21 12:12:42 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "call CSVWRITE( 'C/Users/Bili/Desktop/practice/a.sql, 'SELECT * FROM PARKING_LOT [*]' )"; SQL statement:
+call CSVWRITE( 'C/Users/Bili/Desktop/practice/a.sql, 'SELECT * FROM PARKING_LOT ' ) [42000-197]
